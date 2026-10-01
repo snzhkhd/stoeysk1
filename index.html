@@ -502,20 +502,37 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
   .mobile-bar{display:grid}
   .map-wrap iframe{height:320px}
 }
+
+/* ---------- Галерея ---------- */
+.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.photo-item{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);cursor:pointer;margin:0}
+.photo-item img{width:100%;height:220px;object-fit:cover;transition:.5s;display:block}
+.photo-item:hover img{transform:scale(1.07)}
+.photo-item figcaption{position:absolute;left:0;right:0;bottom:0;padding:12px 14px;background:linear-gradient(transparent,rgba(5,8,12,.9));font-size:.85rem;color:var(--muted);opacity:0;transition:.3s}
+.photo-item:hover figcaption{opacity:1}
+/* ---------- Лайтбокс ---------- */
+.lightbox{position:fixed;inset:0;z-index:200;background:rgba(5,8,12,.95);display:none;align-items:center;justify-content:center;flex-direction:column;padding:60px 80px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:100%;max-height:78vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.lb-caption{margin-top:14px;color:var(--muted);font-size:.95rem;text-align:center}
+.lb-close{position:absolute;top:16px;right:22px;background:none;border:none;color:#fff;font-size:2.4rem;cursor:pointer;line-height:1}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.08);border:1px solid var(--line);color:#fff;font-size:2rem;width:52px;height:52px;border-radius:50%;cursor:pointer;transition:.2s}
+.lb-prev{left:16px}.lb-next{right:16px}
+.lb-prev:hover,.lb-next:hover{background:var(--accent);color:#160b02}
+@media(max-width:600px){.lightbox{padding:60px 10px}.lb-prev{left:6px}.lb-next{right:6px}.lb-prev,.lb-next{width:42px;height:42px;font-size:1.5rem}}
 </style>
 
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113018982', 'ym');
-
-    ym(113018982, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+(function(m,e,t,r,i,k,a){
+  m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+  m[i].l=1*new Date();
+  for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+  k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=112093771','ym');
+ym(112093771,'init',{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/113018982" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<noscript><div><img src="https://mc.yandex.ru/watch/112093771" style="position:absolute;left:-9999px;" alt=""></div></noscript>
 <!-- /Yandex.Metrika counter -->
 </head>
 
@@ -533,6 +550,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
       <a href="#prices">Цены</a>
       <a href="#promos">Акции</a>
       <a href="#about">О нас</a>
+	  <a href="#gallery">Галерея</a>
       <a href="#contacts">Контакты</a>
     </nav>
 
@@ -814,7 +832,38 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-s
     ]
   }
   </script>
+	<!-- ================= ГАЛЕРЕЯ ================= -->
+	<section id="gallery">
+	  <div class="container">
+		<div class="section-head">
+		  <span class="overline">Галерея</span>
+		  <h2>Наши работы</h2>
+		</div>
+		<div class="photo-grid">
+		  <figure class="photo-item"><img src="photos/work1.jpg" alt="Сход-развал в Ейске на стенде" loading="lazy"><figcaption>Сход-развал на стенде</figcaption></figure>
+		  <figure class="photo-item"><img src="photos/work2.jpg" alt="Компьютерная диагностика" loading="lazy"><figcaption>Компьютерная диагностика</figcaption></figure>
+		  <figure class="photo-item"><img src="photos/work3.jpg" alt="Обслуживание авто" loading="lazy"><figcaption>Обслуживание авто</figcaption></figure>
+		  <figure class="photo-item"><img src="photos/work4.jpg" alt="Вид с улицы" loading="lazy"><figcaption>Вид с улицы</figcaption></figure>
+		  <figure class="photo-item"><img src="photos/work5.jpg" alt="Сход-развал" loading="lazy"><figcaption>Сход-развал</figcaption></figure>
+		  <figure class="photo-item"><img src="photos/work6.jpg" alt="Жидкости в наличии" loading="lazy"><figcaption>Жидкости в наличии</figcaption></figure>
+		  <figure class="photo-item"><img src="photos/work7.jpg" alt="Диагностика в Ейске" loading="lazy"><figcaption>Диагностика</figcaption></figure>
+		  <figure class="photo-item"><img src="photos/work8.jpg" alt="Замена масла в Ейске" loading="lazy"><figcaption>Замена масла и фильтров</figcaption></figure>
+		  <figure class="photo-item"><img src="photos/work9.jpg" alt="Замена тормозных колодок в Ейске" loading="lazy"><figcaption>Замена задних тормозных колодок на автомобиле с электронным стояночным тормозом (EPB)</figcaption></figure>
+		  <figure class="photo-item"><img src="photos/work10.jpg" alt="Ремонт авто в Ейске" loading="lazy"><figcaption>Ремонт авто</figcaption></figure>
+		  <figure class="photo-item"><img src="photos/work11.jpg" alt="Сход-развал 3D в Ейске" loading="lazy"><figcaption>Сход-развал 3D</figcaption></figure>
+		  <figure class="photo-item"><img src="photos/work12.jpg" alt="Замена тормозных колодок (EPB) в Ейске" loading="lazy"><figcaption>Замена задних тормозных колодок на автомобиле с электронным стояночным тормозом (EPB)</figcaption></figure>
+		</div>
+	  </div>
+	</section>
 
+	<!-- Лайтбокс (один на всю галерею) -->
+	<div class="lightbox" id="lightbox">
+	  <button class="lb-close" aria-label="Закрыть">×</button>
+	  <button class="lb-prev" aria-label="Назад">‹</button>
+	  <img src="" alt="" id="lb-img">
+	  <button class="lb-next" aria-label="Вперёд">›</button>
+	  <div class="lb-caption" id="lb-caption"></div>
+	</div>
   <!-- CONTACTS -->
   <section id="contacts" class="section-dark">
     <div class="container">
@@ -875,6 +924,36 @@ nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
   nav.classList.remove('open');
   burger?.setAttribute('aria-expanded','false');
 }));
+
+// Галерея-лайтбокс
+const lbItems = [...document.querySelectorAll('.photo-item')];
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lb-img');
+const lbCap = document.getElementById('lb-caption');
+let lbCur = 0;
+function lbOpen(i){
+  lbCur = i;
+  const it = lbItems[lbCur];
+  lbImg.src = it.querySelector('img').src;
+  lbImg.alt = it.querySelector('img').alt;
+  lbCap.textContent = it.querySelector('figcaption') ? it.querySelector('figcaption').textContent : '';
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function lbClose(){ lb.classList.remove('open'); document.body.style.overflow = ''; }
+function lbStep(d){ lbOpen((lbCur + d + lbItems.length) % lbItems.length); }
+lbItems.forEach((it, i) => it.addEventListener('click', () => lbOpen(i)));
+lb.querySelector('.lb-close').addEventListener('click', lbClose);
+lb.querySelector('.lb-prev').addEventListener('click', e => { e.stopPropagation(); lbStep(-1); });
+lb.querySelector('.lb-next').addEventListener('click', e => { e.stopPropagation(); lbStep(1); });
+lb.addEventListener('click', e => { if (e.target === lb) lbClose(); });
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') lbClose();
+  if (e.key === 'ArrowLeft') lbStep(-1);
+  if (e.key === 'ArrowRight') lbStep(1);
+});
+
 </script>
 </body>
 </html>
