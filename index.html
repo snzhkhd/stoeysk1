@@ -75,7 +75,8 @@
 .booking-form input:focus,.booking-form textarea:focus{outline:none;border-color:var(--accent)}
 .consent{display:flex;gap:10px;align-items:flex-start;color:var(--muted);font-size:.88rem}
 .consent a{color:var(--accent-2);text-decoration:underline}
-.form-ok{display:none;background:rgba(61,220,127,.12);border:1px solid rgba(61,220,127,.4);color:#7ee2a0;border-radius:12px;padding:14px 18px;margin-bottom:20px;font-weight:700}
+.form-ok{position:fixed;top:84px;left:50%;transform:translate(-50%,-16px);opacity:0;pointer-events:none;z-index:150;width:min(560px,92%);background:rgba(14,43,29,.97);border:1px solid rgba(61,220,127,.45);color:#7ee2a0;border-radius:12px;padding:14px 18px;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.45);transition:.4s;cursor:pointer;text-align:center}
+.form-ok.show{transform:translate(-50%,0);opacity:1;pointer-events:auto}
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:88px}
@@ -993,9 +994,15 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft') lbStep(-1);
   if (e.key === 'ArrowRight') lbStep(1);
 });
+// Баннер «Заявка отправлена» сверху
 if (location.hash === '#thanks') {
   const b = document.getElementById('thanks-banner');
-  if (b) b.style.display = 'block';
+  if (b) {
+    b.classList.add('show');
+    const hide = () => b.classList.remove('show');
+    b.addEventListener('click', hide);      // скрыть по клику
+    setTimeout(hide, 10000);                  // или сам через 10 секунд
+  }
 }
 </script>
 </body>
