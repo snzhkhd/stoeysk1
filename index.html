@@ -6,8 +6,8 @@
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#070707">
 <link rel="canonical" href="https://xn--17-6kcanu2e.xn--p1ai/">
-<title>Азия Авто Сервис — ремонт и обслуживание китайских автомобилей в Ейске  | шиномонтаж, сход-развал, диагностика</title>
-<meta name="description" content="«Азия Авто Сервис» в Ейске — ремонт и ТО китайских авто КРУГЛОСУТОЧНО, без выходных. Шиномонтаж от 200 ₽, диагностика от 500 ₽, сход-развал 1 000–3 000 ₽. Гарантия, зона ожидания с кофе и Wi-Fi.">
+<title>Азия Авто Сервис — ремонт и обслуживание китайских автомобилей в Ейске</title>
+<meta name="description" content="«Азия Авто Сервис» в Ейске — автосервис по ремонту и техническому обслуживанию китайских автомобилей. Диагностика, ТО, ходовая, масла, шиномонтаж, сход-развал и запчасти.">
 <link rel="icon" href="new_logo.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,6 +69,14 @@
   --radius:20px;
   --shadow:0 18px 60px rgba(0,0,0,.42);
 }
+/* ---------- Форма записи ---------- */
+.booking-form{max-width:640px;display:flex;flex-direction:column;gap:14px}
+.booking-form input,.booking-form textarea{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 18px;color:var(--txt);font-family:inherit;font-size:1rem;resize:vertical}
+.booking-form input:focus,.booking-form textarea:focus{outline:none;border-color:var(--accent)}
+.consent{display:flex;gap:10px;align-items:flex-start;color:var(--muted);font-size:.88rem}
+.consent a{color:var(--accent-2);text-decoration:underline}
+.form-ok{display:none;background:rgba(61,220,127,.12);border:1px solid rgba(61,220,127,.4);color:#7ee2a0;border-radius:12px;padding:14px 18px;margin-bottom:20px;font-weight:700}
+
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:88px}
 body{
@@ -864,6 +872,38 @@ ym(112093771,'init',{ssr:true,webvisor:true,clickmap:true,ecommerce:"dataLayer",
 	  <button class="lb-next" aria-label="Вперёд">›</button>
 	  <div class="lb-caption" id="lb-caption"></div>
 	</div>
+	<!-- ================= ЗАПИСЬ ================= -->
+<section id="booking">
+  <div class="container">
+    <div class="section-head">
+      <span class="overline">Запись</span>
+      <h2>Записаться на сервис</h2>
+    </div>
+
+    <div id="thanks-banner" class="form-ok">✅ Заявка отправлена! Перезвоним в течение 15 минут.</div>
+
+    <form class="booking-form" action="https://formsubmit.co/wowdk45@gmail.com" method="POST">
+      <input type="text" name="Имя" placeholder="Ваше имя" required>
+      <input type="tel" name="Телефон" placeholder="Ваш номер телефона *" required>
+      <input type="text" name="Автомобиль" placeholder="Марка авто (необязательно)">
+      <textarea name="Комментарий" rows="3" placeholder="Что беспокоит? (необязательно)"></textarea>
+
+      <label class="consent">
+        <input type="checkbox" required checked>
+        <span>Соглашаюсь на <a href="privacy.html" target="_blank">обработку персональных данных</a></span>
+      </label>
+
+      <!-- служебные поля formsubmit -->
+      <input type="hidden" name="_subject" value="🚗 Заявка с сайта сто-ейск.рф">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://xn----jtbmeqred.xn--p1ai/#thanks">
+      <input type="hidden" name="_honeypot" value="">
+
+      <button class="btn btn-primary" type="submit" onclick="ym(112093771,'reachGoal','form_submit')">Отправить заявку</button>
+    </form>
+  </div>
+</section>
   <!-- CONTACTS -->
   <section id="contacts" class="section-dark">
     <div class="container">
@@ -953,7 +993,10 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft') lbStep(-1);
   if (e.key === 'ArrowRight') lbStep(1);
 });
-
+if (location.hash === '#thanks') {
+  const b = document.getElementById('thanks-banner');
+  if (b) b.style.display = 'block';
+}
 </script>
 </body>
 </html>
